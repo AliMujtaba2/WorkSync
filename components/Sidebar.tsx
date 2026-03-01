@@ -5,52 +5,52 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 export default function Sidebar() {
-    const pathname = usePathname();
+  const pathname = usePathname();
 
-    const navItems = [
-        { name: 'My Teams', href: '/main/Dashboard' },
-        { name: 'Task Management', href: '/main/TaskManagement' },
-        { name: 'Attendance', href: '#' },
-        { name: 'Office Setting', href: '#' },
-        { name: 'Scoreboard (future)', href: '#' },
-        { name: 'Announcement', href: '#' },
-        { name: 'My Profile', href: '#' },
-    ];
+  const navItems = [
+    { name: 'My Teams', href: '/main/Dashboard' },
+    { name: 'Task Management', href: '/main/TaskManagement' },
+    { name: 'Attendance', href: '/main/Attendance' },
+    { name: 'Office Settings', href: '/main/OfficeSettings' },
+    { name: 'Scoreboard (future)', href: '#' },
+    { name: 'Announcement', href: '#' },
+    { name: 'My Profile', href: '/main/Profile' },
+  ];
 
-    return (
-        <aside className="sidebar">
-            <div className="logo">WorkSync</div>
+  return (
+    <aside className="sidebar">
+      <div className="logo">WorkSync</div>
 
-            <div className="profileCard">
-                <div className="avatar">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                    </svg>
-                </div>
-                <div className="profileInfo">
-                    <h3>Your Name</h3>
-                    <p>Admin</p>
-                </div>
-            </div>
+      <div className="profileCard">
+        <div className="avatar">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+          </svg>
+        </div>
+        <div className="profileInfo">
+          <h3>Your Name</h3>
+          <p>Admin</p>
+        </div>
+      </div>
 
-            <ul className="navList">
-                {navItems.map((item, index) => {
-                    const isActive = pathname === item.href;
-                    return (
-                        <li
-                            key={index}
-                            className={`navItem ${isActive ? 'active' : ''}`}
-                        >
-                            <Link href={item.href} style={{ textDecoration: 'none', color: 'inherit', display: 'flex', alignItems: 'center', gap: '12px', width: '100%' }}>
-                                <div className="iconPlaceholder">x</div>
-                                <span>{item.name}</span>
-                            </Link>
-                        </li>
-                    );
-                })}
-            </ul>
+      <ul className="navList">
+        {navItems.map((item, index) => {
+          const isActive = pathname === item.href;
+          return (
+            <li
+              key={index}
+              className={`navItem ${isActive ? 'active' : ''}`}
+            >
+              <Link href={item.href} style={{ textDecoration: 'none', color: 'inherit', display: 'flex', alignItems: 'center', gap: '12px', width: '100%' }}>
+                <div className="iconPlaceholder">x</div>
+                <span>{item.name}</span>
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
 
-            <style jsx>{`
+      <style jsx>{`
         .sidebar {
           width: 280px;
           background-color: #121824;
@@ -142,6 +142,6 @@ export default function Sidebar() {
           font-size: 10px;
         }
       `}</style>
-        </aside>
-    );
+    </aside>
+  );
 }
